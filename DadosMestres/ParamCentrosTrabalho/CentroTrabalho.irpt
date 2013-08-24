@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<title>SAP MII</title>
+<link type="text/css" rel="stylesheet" href="../../Common/Includes/Styles.css" />
+<script language="javascript" src="Includes/CentrosTrabalho.js"></script>
+<script language="javascript" src="../../Common/Includes/Functions_Prototype.js"></script>
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function start(){
+
+}
+
+function openPayOffs() {
+	openWindow("CentroTrabalhoPayOff.htm", "CentroTrabalhoPayOff", 350, 310);
+}
+
+//-->
+</script>
+</head>
+<body onload="Prototype_setAppletsLoaded();">
+<div class="pageTitle">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td> Parametrização de Centros de Trabalho   </td>
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td align="right">Planta:</td>
+      <td><APPLET NAME="selectPlant" ID="selectPlant" CODEBASE="/XMII/Classes" CODE="iBrowser" ARCHIVE="illum8.zip" WIDTH="120" HEIGHT="23" TABINDEX=1 MAYSCRIPT>
+            <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Query/Qry_Centros_Sel">
+        <param name="DisplayTemplate" value="ACOCEARENSE/Common/Display/browserPlanta" />
+            <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+            <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+        </APPLET></td>
+      <td align="right">Código:</td>
+      <td><input name="codigo" type="text" id="codigo" size="10" maxlength="10" class="objectField"/></td>
+      <td align="right">Descrição:</td>
+      <td><input name="descricao" type="text" id="descricao" size="30" maxlength="30" class="objectField"/></td>
+      <td align="right"><input type="button" name="BtFilter" id="BtFilter" value="Filtrar" class="objectButton" onclick="filtraPlanta()" /></td>
+    </tr>
+  </table>
+</div>
+<div class="containerTitle">Lista de Centros de Trabalho</div>
+<applet id="gridCentros" NAME="gridCentros" CODEBASE="/XMII/Classes" CODE="iGrid" ARCHIVE="illum8.zip" WIDTH="1095" HEIGHT="300" TABINDEX=1 MAYSCRIPT>
+  <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE&#x2f;Common&#x2f;Display&#x2f;gridCommon">
+  <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Query/Qry_Centros_de_Trabalho_Sel">
+  <PARAM NAME="ColumnHeadings" VALUE="Código,Descrição,idcons,Tipo de Consumo,idimpress,Impressora,idbalan,Balança,Id Máquina,Usa Tara?,PayOff?,cod">
+  <PARAM NAME="ColumnWidths" VALUE="10,30,0,20,0,20,0,20,20,10,10,0">
+  <PARAM NAME="SelectionEvent" VALUE="selecionaCentro">
+  <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+</applet>
+<div class="containerTitle">Formulário</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td align="right">Tipo de Consumo:</td>
+      <td><applet name="selectConsumo" id="selectConsumo" codebase="/XMII/Classes" code="iBrowser" archive="illum8.zip" width="120" height="23" tabindex="1" mayscript="MAYSCRIPT">
+        <param name="QueryTemplate" value="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Query/Qry_Tipos_De_Consumo_Sel" />
+        <param name="DisplayTemplate" value="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Display/browserConsumo" />
+        <param name="Content-Type" value="image/png" />
+        <param name="CreationEvent" value="setAppletsLoaded" />
+      </applet></td>
+      <td align="right">Balança:</td>
+      <td><applet name="selectBalanca" id="selectBalanca" codebase="/XMII/Classes" code="iBrowser" archive="illum8.zip" width="120" height="23" tabindex="1" mayscript="MAYSCRIPT">
+        <param name="QueryTemplate" value="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Query/Qry_Balancas_Sel" />
+        <param name="DisplayTemplate" value="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Display/browserBalancas" />
+        <param name="Content-Type" value="image/png" />
+        <param name="CreationEvent" value="setAppletsLoaded" />
+      </applet></td>
+      <td align="right">Usa Tara?</td>
+      <td><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:0px; padding:0px;">
+        <tr style="margin:0px; padding:0px;">
+          <td style="margin:0px; padding:0px;"><input name="tara" type="radio" id="tara_si" value="1"  style="border:0px" /></td>
+          <td style="margin:0px; padding:0px;">Sim</td>
+          <td style="margin:0px; padding:0px;"><input type="radio" name="tara" id="tara_no" value="0" checked="checked" style="border:0px" /></td>
+          <td style="margin:0px; padding:0px;">Não</td>
+        </tr>
+      </table></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right">Impressora:</td>
+      <td><applet name="selectImpressora" id="selectImpressora" codebase="/XMII/Classes" code="iBrowser" archive="illum8.zip" width="120" height="23" tabindex="1" mayscript="MAYSCRIPT">
+        <param name="QueryTemplate" value="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Query/Qry_Impressoras_Sel" />
+        <param name="DisplayTemplate" value="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Display/browserImpressoras" />
+        <param name="Content-Type" value="image/png" />
+        <param name="CreationEvent" value="setAppletsLoaded" />
+      </applet></td>
+      <td align="right">Id Máquina:</td>
+      <td><input name="idMaquina" type="text" id="idMaquina" size="18" maxlength="2" class="objectField" /></td>
+      <td align="right">Possui PayOff?</td>
+      <td><table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:0px; padding:0px;">
+        <tr style="margin:0px; padding:0px;">
+          <td style="margin:0px; padding:0px;"><input name="payoff" type="radio" id="payoff_si" value="1" style="border:0px" onclick="payoff_but(false)" /></td>
+          <td style="margin:0px; padding:0px;">Sim</td>
+          <td style="margin:0px; padding:0px;"><input type="radio" name="payoff" id="payoff_no" value="0" style="border:0px" checked="checked"  onclick="payoff_but(true)" /></td>
+          <td style="margin:0px; padding:0px;">Não</td>
+        </tr>
+      </table></td>
+      <td><span class="objectField">
+        <input name="BtPayoff" id="BtPayoff" type="button"  class="objectButton" onclick="ShowModal()" disabled="disabled" value="  PayOffs  " />
+      </span></td>
+    </tr>
+  </table>
+</div>
+<div class="containerButtons">
+  <input name="BtInsert" id="BtInsert" disabled="disabled" type="button" class="objectButton" onclick="salvaCentro();" value="   Salvar   " />
+  <input name="BtCancel" id="BtCancel" type="button" class="objectButton" onclick="cancelEdit();" value="Cancelar" />
+  <input type="hidden" id="acao" name="acao" value="I" />
+</div>
+<div id="messageBar" class="containerMessages"></div>
+<APPLET NAME="plantaUpdDel" id="plantaUpdDel" CODEBASE="/XMII/Classes" CODE="iCommand" ARCHIVE="illum8.zip" WIDTH="1" HEIGHT="1" MAYSCRIPT>
+  <PARAM NAME = "QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Query/Xct_ParamCentrosTrabalho">
+  <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+</APPLET>
+</body>
+</html>

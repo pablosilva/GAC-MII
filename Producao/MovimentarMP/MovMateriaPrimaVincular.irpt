@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<title>SAP MII</title>
+<link type="text/css" rel="stylesheet" href="../../Common/Includes/Styles.css" />
+<script language="javascript" src="../../Common/Includes/Functions.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function filtraPayOff(){
+  var applet = document.gridItemEstoque;
+  var idOP = applet.getPropertyValue("idOrdemProducao");
+  
+  document.getElementById('idOrdemProd').value = idOP;
+  
+  applet.getQueryObject().setParam(1,idOP);
+  
+  applet.refresh();
+}
+
+function atualizaCamposUD(){
+
+  var applet = document.gridItemEstoque;
+  
+  applet.getQueryObject().setParam(1,document.getElementById('idUD').value)
+  
+  applet.refresh();
+  
+  if(applet.getGridObject().getRowCount()==0){
+    showMessage('Esta UD não está disponível/cadastrada.','E');
+  }
+  else{
+    document.getElementById('dsDescricaoUD').value = applet.getGridObject().getCellValueByName(1,"DESCRICAO");
+	document.getElementById('vlPesoUD').value = applet.getGridObject().getCellValueByName(1,"PESO");
+  }
+}
+
+function salvaVinculoMaterial(){
+  var applet = document.vincularMaterialIns;
+  var query  = applet.getQueryObject();
+  
+  var gridItens = document.gridItemEstoque.getGridObject();
+  
+  var dataLink = document.selectPayOff.getBrowserObject().getSelectedDatalinkValue();
+  dataLink = dataLink.split("|");
+  
+  query.setParam(1,gridItens.getCellValueByName(1,"IDMATERIAL"));//IDMATERIAL - grid
+  query.setParam(2,document.getElementById('idOrdemProd').value);//IDOP - campo
+  query.setParam(3,document.getElementById('idUD').value);//UD - campo (digitado)
+  query.setParam(4,gridItens.getCellValueByName(1,"PESO"));//PESO - grid
+  query.setParam(5,dataLink[1]);//IDOBJETO - datalink
+  query.setParam(6,dataLink[0]);//PARTECENTROTRABALHO - datalink
+  query.setParam(7,gridItens.getCellValueByName(1,"FORNECEDOR"));//FORNECEDOR - grid
+  query.setParam(8,gridItens.getCellValueByName(1,"LOTELOGISTICO"));//LOTELOGISTICO - grid
+  query.setParam(9,gridItens.getCellValueByName(1,"FLAGREIDENTIFICADO"));//FLAGREIDENTIFICADO - grid 
+  query.setParam(10,document.gridPlanta.getPropertyValue("illumloginname"));//IDUSUARIO
+  
+}
+//document.gridPlanta.getPropertyValue("illumloginname");
+
+//-->
+</script>
+</head>
+<body scroll="no">
+<div class="pageTitle">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>Vincular Matéria-Prima</td>
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerBody">
+  <table border="0" align="center" cellpadding="0" cellspacing="3" class="objectForm">
+    <tr>
+      <td align="right" nowrap="nowrap">OP:</td>
+      <td><span class="objectField">
+        <input disabled="disabled" name="idOrdemProd" type="text" class="objectField objectReadOnly" id="idOrdemProd" value="000000233" size="10" maxlength="10" />
+      </span></td>
+    </tr>
+    <tr>
+      <td align="right">UD:</td>
+      <td><input name="idUD" type="text" id="idUD" size="16" maxlength="10" onchange="atualizaCamposUD();" class="objectField" /></td>
+    </tr>
+    <tr>
+      <td align="right">Descrição:</td>
+      <td><input disabled="disabled" name="dsDescricaoUD" type="text" id="dsDescricaoUD" size="30" maxlength="10" class="objectField objectReadOnly" /></td>
+    </tr>
+    <tr>
+      <td align="right">Peso:</td>
+      <td><input disabled="disabled" name="vlPesoUD" type="text" id="vlPesoUD" size="10" maxlength="10" class="objectField objectReadOnly" style="text-align:right;"/></td>
+    </tr>
+    <tr>
+      <td align="right">P.Prod/PlayOff:</td>
+      <td>
+        <APPLET NAME="selectPayOff" ID="selectPayOff" CODEBASE="/XMII/Classes" CODE="iBrowser" ARCHIVE="illum8.zip" WIDTH="150" HEIGHT="20" TABINDEX=1 MAYSCRIPT>
+            <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Query/Qry_Parte_dos_Centros_de_Trabalho_Combo_Sel">
+            <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Display/browserPayOff">
+            <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+            <PARAM NAME="CreationEvent" VALUE="filtraPayOff">
+        </APPLET>
+      </td>
+    </tr>	
+  </table>
+</div>
+<div id="messageBar" class="containerMessages"></div>
+<span class="containerButtonsPopUp">
+<input name="BtUpdate" id="BtUpdate" type="button" class="objectButton" onclick="salvaVinculoMaterial();" value="  Vincular  " />
+<input name="BtCancel" id="BtCancel" type="button" class="objectButton" onclick="window.close();" value=" Fechar " />
+</span>
+<APPLET NAME="gridItemEstoque" id="gridItemEstoque" CODEBASE="/XMII/Classes" CODE="iGrid" ARCHIVE="illum8.zip"  WIDTH="1" HEIGHT="1" TABINDEX=1 MAYSCRIPT>
+  <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Query/Qry_Itens_de_Estoque_Sel">
+  <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE/Common/Display/gridCommon">
+  <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+</APPLET>
+<APPLET NAME="vincularMaterialIns" id="vincularMaterialIns" CODEBASE="/XMII/Classes" CODE="iCommand" ARCHIVE="illum8.zip" WIDTH="1" HEIGHT="1" MAYSCRIPT>
+  <PARAM NAME = "QueryTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Query/Xct_Vincular_Material">
+</APPLET>
+</body>
+</html>

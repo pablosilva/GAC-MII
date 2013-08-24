@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<title>SAP MII</title>
+<link type="text/css" rel="stylesheet" href="../../Common/Includes/Styles.css" />
+<script language="javascript" src="../../Common/Includes/Functions.js"></script>
+<script type="text/javascript" src="Includes/ManterPlantasProducao.js"></script>
+</head>
+<body>
+<div class="pageTitle">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>Manter Plantas de Produção</td>
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td align="right">Código:</td>
+      <td><input name="idPlantaFiltro" type="text" id="idPlantaFiltro" size="10" maxlength="10" class="objectField"/></td>
+      <td align="right">Descrição:</td>
+      <td><input name="descricaoFiltro" type="text" id="descricaoFiltro" size="30" maxlength="20" class="objectField"/></td>
+      <td align="right"><input type="button" name="BtFilter" id="BtFilter" value="Filtrar" class="objectButton" onclick="filtraPlanta()" /></td>
+    </tr>
+  </table>
+</div>
+<div class="containerTitle">Lista de Plantas</div>
+<APPLET NAME="gridPlanta" ID="gridPlanta" CODEBASE="/XMII/Classes" CODE="iGrid" ARCHIVE="illum8.zip" WIDTH="800" HEIGHT="300" TABINDEX=1 MAYSCRIPT>
+    <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ManterPlantasProducao/Display/gridPlanta">
+    <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ManterPlantasProducao/Query/Qry_Centros_filtro_Sel">
+    <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+    <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+    <PARAM NAME="SelectionEvent" VALUE="selecionaPlanta">
+    <PARAM NAME="ColumnHeadings" VALUE="Código,Descrição,,Local Não Conforme,Ativo?">
+    <PARAM NAME="ColumnWidths" VALUE="10,30,0,20,10">
+</APPLET>
+<div class="containerTitle">Formulário</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td align="right">Código:</td>
+      <td><input name="idPlanta" type="text" id="idPlanta" size="20" maxlength="10" class="objectField" disabled="disabled"/><input type="hidden" id="acao" name="acao" value="I" /></td>
+      <td align="right">Descrição:</td>
+      <td><input name="dsDescricao" type="text" id="dsDescricao" size="30" maxlength="20" class="objectField" disabled="disabled"/></td>
+      <td align="right">Local Não Conforme:</td>
+      <td>
+        <APPLET NAME="selectLocal" ID="selectLocal" CODEBASE="/XMII/Classes" CODE="iBrowser" ARCHIVE="illum8.zip" WIDTH="150" HEIGHT="23" TABINDEX=1 MAYSCRIPT>
+            <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ManterPlantasProducao/Query/Qry_Locais_de_Armazenamento_Combo_Sel">
+            <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ManterPlantasProducao/Display/browserPlanta">
+            <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+            <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+        </APPLET>
+      </td>
+      <td align="right">Ativo?</td>
+      <td><table border="0" cellspacing="0" cellpadding="0" style="margin:0px; padding:0px;">
+          <tr style="margin:0px; padding:0px;">
+            <td style="margin:0px; padding:0px;"><input name="flInativo" type="radio" id="flInativo0" checked="checked" style="border:0px" disabled="disabled"/></td>
+            <td style="margin:0px; padding:0px;">Sim</td>
+            <td style="margin:0px; padding:0px;"><input type="radio" name="flInativo" id="flInativo1" style="border:0px" disabled="disabled"/></td>
+            <td style="margin:0px; padding:0px;">Não</td>
+          </tr>
+      </table></td>
+    </tr>
+  </table>
+</div>
+<div class="containerButtons">
+  <input name="BtNovo" id="BtNovo" type="button" class="objectButton" onclick="novaPlanta();" value="   Novo   " />
+  <input name="BtSalvar" id="BtSalvar" type="button" class="objectButton" onclick="salvaPlanta();" value="   Salvar   " disabled="disabled"/>
+  <input name="BtExcluir" id="BtExcluir" type="button" class="objectButton" onclick="excluirPlanta();" value="  Excluir  " disabled="disabled" />
+  <input name="BtCancel" id="BtCancel" type="button" class="objectButton" onclick="cancelaEdit();" value="Cancelar" />
+</div>
+<div id="messageBar" class="containerMessages"></div>
+<APPLET NAME="plantaInsUpdDel" id="plantaInsUpdDel" CODEBASE="/XMII/Classes" CODE="iCommand" ARCHIVE="illum8.zip" WIDTH="1" HEIGHT="1" MAYSCRIPT>
+  <PARAM NAME = "QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ManterPlantasProducao/Query/Xct_Salva_Planta">
+  <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+</APPLET>
+</body>
+</html>

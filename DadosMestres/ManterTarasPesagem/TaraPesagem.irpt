@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<title>SAP MII</title>
+<link type="text/css" rel="stylesheet" href="../../Common/Includes/Styles.css" />
+<script language="javascript" src="../../Common/Includes/Functions_Prototype.js"></script>
+<script language="javascript" src="Includes/ManterTaras.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function start(){
+
+}
+
+function openPayOffs() {
+	openWindow("CentroTrabalhoPayOff.htm", "CentroTrabalhoPayOff", 350, 310);
+}
+
+//-->
+</script>
+</head>
+<body onload="Prototype_setAppletsLoaded();">
+<div class="pageTitle">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>Manter Taras de Pesagem</td>
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td align="right">Código:</td>
+      <td><input name="idTara" type="text" id="idTara" size="10" maxlength="10" class="objectField"/></td>
+      <td align="right">Descrição:</td>
+      <td><input name="dsTara" type="text" id="dsTara" size="30" maxlength="30" class="objectField"/></td>
+      <td align="right"><input type="button" name="BtFilter" id="BtFilter" value="Filtrar" class="objectButton" onclick="filtraTara()" /></td>
+    </tr>
+  </table>
+</div>
+<div class="containerTitle">Lista de Taras de Pesagem</div>
+<applet id="gridTaras" name="gridTaras" codebase="/XMII/Classes" code="iGrid" archive="illum8.zip" width="1000" height="300" tabindex="1" mayscript="MAYSCRIPT">
+  <param name="DisplayTemplate" value="ACOCEARENSE/Common/Display/gridCommon" />
+  <param name="QueryTemplate" value="ACOCEARENSE/DadosMestres/TelasPortal/ManterTarasPesagem/Query/Qry_TarasPesagem_Sel" />
+  <param name="ColumnHeadings" value="Código,Descrição,Peso(Kg),Usuario,Excluido" />
+  <param name="ColumnWidths" value="15,30,15,0,0" />
+  <param name="SelectionEvent" value="selecionaTara" />
+  <param name="CreationEvent" value="setAppletsLoaded" />
+</applet>
+<div class="containerTitle">Formulário</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td align="right">Código:</td>
+      <td><input name="inpIdTara" type="text" id="inpIdTara" size="18" maxlength="10" class="objectField"/></td>
+      <td align="right">Descrição:</td>
+      <td><input name="inpDsTara" type="text" id="inpDsTara" size="30" maxlength="10" class="objectField"/></td>
+      <td align="right">Peso (Kg):</td>
+      <td><input name="inpKgTara" type="text" id="inpKgTara" size="10" maxlength="10" class="objectField" style="text-align:right;"/></td>
+    </tr>
+  </table>
+</div>
+<div class="containerButtons">
+  <input name="BtNovo" id="BtNovo" type="button" class="objectButton" onclick="novaTara()" value="   Novo   " />
+  <input name="BtSalvar" id="BtSalvar" type="button" class="objectButton" onclick="salvaTara();" disabled="disabled" value="   Salvar   " />
+  <input name="BtExcluir" id="BtExcluir" type="button" class="objectButton" onclick="excluirTara();" disabled="disabled" value="  Excluir  " />
+  <input name="BtCancel" id="BtCancel" type="button" class="objectButton" onclick="cancelaEdit();" value="Cancelar" />
+  <input type="hidden" id="acao" name="acao" value="I" />
+</div>
+<div id="messageBar" class="containerMessages"></div>
+<applet name="TaraInsDelUp" id="TaraInsDelUp" codebase="/XMII/Classes" code="iCommand" archive="illum8.zip" width="1" height="1" mayscript="MAYSCRIPT">
+  <param name = "QueryTemplate" value="ACOCEARENSE/DadosMestres/TelasPortal/ManterTarasPesagem/Query/Xct_MantenerTarasPesagem" />
+  <param name="CreationEvent" value="setAppletsLoaded" />
+</applet>
+</body>
+</html>

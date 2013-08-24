@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<title>SAP MII</title>
+<link type="text/css" rel="stylesheet" href="../../Common/Includes/Styles.css" />
+<script language="javascript" src="../../Common/Includes/Functions.js"></script>
+<script type="text/javascript" src="Includes/ManterBalanca.js"></script>
+</head>
+<body>
+<div class="pageTitle">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>Manter Balanças</td>
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td align="right">Código:</td>
+      <td><input name="idBalancaFiltro" type="text" id="idBalancaFiltro" size="10" maxlength="10" class="objectField"/></td>
+      <td align="right">Descrição:</td>
+      <td><input name="descricaoFiltro" type="text" id="descricaoFiltro" size="30" maxlength="20" class="objectField"/></td>
+      <td align="right">Modelo:</td>
+      <td><input name="modeloFiltro" type="text" id="modeloFiltro" size="20" maxlength="15" class="objectField"/></td>
+      <td align="right"><input type="button" name="BtFilter" id="BtFilter" value="Filtrar" class="objectButton" onclick="filtraBalanca();" /></td>
+    </tr>
+  </table>
+</div>
+<div class="containerTitle">Lista de Balanças</div>
+<applet id="gridBalanca" NAME="gridBalanca" CODEBASE="/XMII/Classes" CODE="iGrid" ARCHIVE="illum8.zip" WIDTH="800" HEIGHT="300" TABINDEX=1 MAYSCRIPT>
+  <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE&#x2f;Common&#x2f;Display&#x2f;gridCommon">
+  <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ManterBalanca/Query/Qry_Balanca_filtro_Sel">
+  <PARAM NAME="ColumnHeadings" VALUE="Código,Descrição,Modelo,Conexão,Contigência">
+  <PARAM NAME="ColumnWidths" VALUE="10,30,20,20,10">
+  <PARAM NAME="SelectionEvent" VALUE="selecionaBalanca">
+  <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+</applet>
+<div class="containerTitle">Formulário</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td align="right">Código:</td>
+      <td><input name="idBalanca" type="text" disabled="disabled" class="objectField" id="idBalanca" size="20" maxlength="10"/><input type="hidden" id="acao" name="acao" value="I" /></td>
+      <td align="right">Descrição:</td>
+      <td><input name="dsDescrica" type="text" disabled="disabled" class="objectField" id="dsDescrica" size="30" maxlength="20"/></td>
+      <td align="right">Contingência:</td>
+      <td><table border="0" cellspacing="0" cellpadding="0" style="margin:0px; padding:0px;">
+        <tr style="margin:0px; padding:0px;">
+          <td style="margin:0px; padding:0px;"><input name="flContigencia" type="radio" id="flContigencia0" checked="checked" style="border:0px" disabled="disabled" /></td>
+          <td style="margin:0px; padding:0px;">Não</td>
+          <td style="margin:0px; padding:0px;"><input name="flContigencia" type="radio" id="flContigencia1" style="border:0px" disabled="disabled" /></td>
+          <td style="margin:0px; padding:0px;">Sim</td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td align="right">Modelo:</td>
+      <td><input name="cdModelo" type="text" disabled="disabled" class="objectField" id="cdModelo" size="20" maxlength="15"/></td>
+      <td align="right">Conexão:</td>
+      <td><input name="dsConexao" type="text" disabled="disabled" class="objectField" id="dsConexao" size="30" maxlength="10"/></td>
+      <td align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerButtons">
+  <input name="BtNovo" id="BtNovo" type="button" class="objectButton" onclick="novaBalanca();" value="   Novo   " />
+
+  <input name="BtSalvar" id="BtSalvar" type="button" class="objectButton" onclick="salvaBalanca();" value="   Salvar   " disabled="disabled"/>
+  <input name="BtExcluir" id="BtExcluir" type="button" class="objectButton" onclick="excluirBalanca();" value="  Excluir  " disabled="disabled" />
+  <input name="BtCancel" id="BtCancel" type="button" class="objectButton" onclick="cancelaEdit();" value="Cancelar" />
+</div>
+<div id="messageBar" class="containerMessages"></div>
+<APPLET NAME="balancaInsUpdDel" id="balancaInsUpdDel" CODEBASE="/XMII/Classes" CODE="iCommand" ARCHIVE="illum8.zip" WIDTH="1" HEIGHT="1" MAYSCRIPT>
+  <PARAM NAME = "QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ManterBalanca/Query/Xct_Salva_Balanca">
+  <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+</APPLET>
+</body>
+</html>

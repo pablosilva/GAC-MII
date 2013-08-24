@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<title>SAP MII</title>
+<link type="text/css" rel="stylesheet" href="../../Common/Includes/Styles.css" />
+<script language="javascript" src="Includes/CentrosTrabalho.js"></script>
+<script language="javascript" src="../../Common/Includes/Functions_Prototype.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+function start(){
+
+}
+
+//-->
+</script>
+</head>
+<body onload="Init();" onunload="OnOK();" scroll="no">
+<div class="pageTitle">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>PayOffs</td>
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerBody">
+  <table border="0" cellpadding="0" cellspacing="2" class="objectForm">
+    <tr>
+      <td align="right" nowrap="nowrap">Centro de Trabalho:</td>
+      <td align="left" nowrap="nowrap" class="objectField"><input disabled="disabled" name="dsCentro" type="text" class="objectField objectReadOnly" id="dsCentro" value="" size="20" maxlength="20" /></td>
+    </tr>
+  </table>
+</div>
+<div class="containerTitle">Lista</div>
+<applet id="gridPayoff" NAME="gridPayoff" CODEBASE="/XMII/Classes" CODE="iGrid" ARCHIVE="illum8.zip" WIDTH="300" HEIGHT="140" TABINDEX=1 MAYSCRIPT>
+  <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE&#x2f;Common&#x2f;Display&#x2f;gridCommon">
+  <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Query/Qry_Partes_Centros_De_Trabalho_Sel">
+  <PARAM NAME="ColumnHeadings" VALUE="PayOffs,,">
+  <PARAM NAME="ColumnWidths" VALUE="20, 0, 20">
+  <PARAM NAME="SelectionEvent" VALUE="selecionaPayoff">
+  <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+</applet>
+
+<div class="containerBody" style="background-color:#E0E0E0;">
+  <table border="0" cellpadding="0" cellspacing="0" class="objectForm">
+    <tr>
+      <td align="right" nowrap="nowrap">&nbsp;&nbsp;PayOff:</td>
+      <td align="left" nowrap="nowrap" class="objectField"><input name="payoff" type="text" class="objectField" id="payoff" value="" size="8" maxlength="8" /></td>
+    </tr>
+  </table>
+</div>
+<span class="containerButtonsPopUp">
+        <input name="BtUpdate" id="BtUpdate" type="button" class="objectButton" onclick="salvaPayoff('I');" value="Adicionar" />
+        <input name="BtUpdate2" id="BtUpdate2" type="button" class="objectButton" onclick="salvaPayoff('D');" value="Remover" />
+        <input name="BtCancel" id="BtCancel" type="button" class="objectButton" onclick="OnOK();" value=" Fechar " />
+</span>
+<div id="messageBar" class="containerMessages"></div>
+<APPLET NAME="payoffInsDel" id="payoffInsDel" CODEBASE="/XMII/Classes" CODE="iCommand" ARCHIVE="illum8.zip" WIDTH="1" HEIGHT="1" MAYSCRIPT>
+  <PARAM NAME = "QueryTemplate" VALUE="ACOCEARENSE/DadosMestres/TelasPortal/ParamCentrosTrabalho/Query/Xct_Manutencao_Payoff">
+  <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+</APPLET>     
+</span>
+<span class="containerButtons">
+
+</span>
+</body>
+</html>

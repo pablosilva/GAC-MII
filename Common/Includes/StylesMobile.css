@@ -1,0 +1,139 @@
+body {
+	/* font-family:Arial, Helvetica, sans-serif; */
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:11px;
+	background-color:#EAF1F6;
+	margin:0px;
+	padding:0px;
+	background-image:url(/XMII/CM/PEPSICO/Common/Images/BackLogoMobile.gif);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+table {
+	/* font-family:Arial, Helvetica, sans-serif; */
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:11px;
+}
+
+div {
+	/* font-family:Arial, Helvetica, sans-serif; */
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:11px;
+}
+input {
+	/* font-family:Arial, Helvetica, sans-serif; */
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:11px;
+	margin:0px;
+	padding:3px;
+}
+
+a:link {
+	color: #0000FF;
+	text-decoration: underline;
+}
+a:active {
+	color: #0000FF;
+	text-decoration: underline;
+}
+a:visited {
+	color: #0000FF;
+	text-decoration: underline;
+}
+a:hover {
+	color: #FF0000;
+	text-decoration: underline;
+}
+.containerHeader {
+	background-color:#FFFFFF;
+	border-bottom:1px solid #000000;
+}
+.containerTitle {
+	background-color:#D8E4F1;
+	background-image:url(/XMII/CM/PEPSICO/Common/Images/BackTitleMobile.jpg);
+	border-bottom:1px solid #000000;
+
+}
+.containerTitle td {
+	text-transform:uppercase;
+	font-size:11px;
+	font-weight:bold;
+	padding-left:3px;
+}
+.containerBar table  {
+	font-size:11px;
+	border-bottom:1px solid #000000;
+	background-image:url(/XMII/CM/PEPSICO/Common/Images/BackBarMobile.gif);
+	background-repeat:repeat-x;
+	background-position:left;
+	height:20px; 
+}
+.containerBar table td {
+	padding-left:2px;
+	padding-right:2px;
+}
+.containerBody {
+	margin:2px;
+}
+.containerButtons {
+	padding:2px;
+	text-align:center;
+}
+
+.containerMessages {
+	position:absolute;
+	width:100%;
+	font-weight:bold;
+	padding:2px;
+	background-color:#E0E0E0;
+	border:1px solid #CCCCCC;
+	display:none;
+}
+.msgError {
+	background-color:#FF0000;
+	border:1px solid #000000;	
+	color:#FFFFFF;
+	background-image:url(../Images/error.gif);
+	background-repeat:no-repeat;
+	background-position:left;
+	padding-left:20px;
+}
+.msgWarning {
+	background-color:#FFCC00;
+	border:1px solid #000000;	
+	color:#000000;
+	background-image:url(../Images/warning.gif);
+	background-repeat:no-repeat;
+	background-position:left;
+	padding-left:20px;
+}
+.msgSuccessful {
+	background-color:#00CC00;
+	border:1px solid #000000;	
+	color:#FFFFFF;
+	background-image:url(../Images/successful.gif);
+	background-repeat:no-repeat;
+	background-position:left;
+	padding-left:20px;
+}
+.msgLoading {
+	background-color:#999999;
+	border:1px solid #000000;	
+	color:#FFFFFF;
+	background-image:url(../Images/wait.gif);
+	background-repeat:no-repeat;
+	background-position:left;
+	padding-left:20px;
+}
+.objectButton {
+	font-weight:bold;
+	background-color:#F9EEB5;
+	border:1px solid #000000;
+	padding:3px;
+}
+.objectDisabled {
+	background-color:#E1EBF2;
+}
+.objectReadOnly {
+	background-color:#E1EBF2;
+}

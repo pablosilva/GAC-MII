@@ -1,0 +1,283 @@
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	background-color:#EAF1F6;
+	margin:2px;
+	padding:0px;
+}
+table {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+div {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	border:0px;
+}
+
+input {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	border: 1px solid #999999;
+	color:#000000;
+	height:15px;
+}
+
+a:link {
+	color: #0000FF;
+	text-decoration: none;
+}
+a:active {
+	color: #0000FF;
+	text-decoration: none;
+}
+a:visited {
+	color: #0000FF;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF0000;
+	text-decoration: underline;
+}
+
+.objectButton {
+	font-weight:bold;
+	background-color:#F9EEB5;
+	border:1px solid #000000;
+	height:19px;
+}
+
+.objectDisabled {
+	background-color:#D9D7C6;
+}
+
+.objectReadOnly {
+	background-color:#D9D7C6;
+}
+
+select {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	border: 1px solid #999999;
+	color:#000000;
+}
+
+.pageTitle {
+	font-size:16px;
+	font-weight:bold;
+	padding:8px;
+	background-image:url(../Images/HeaderBg.gif);
+	background-repeat:repeat-x;
+}
+.pageTitle td {
+	font-size:16px;
+	font-weight:bold;
+}
+.pageTitle td td {
+	font-size:11px;
+	font-weight:bold;
+	font-style:normal;
+}
+.pageSubTitle {
+	font-size:11px;
+	background-color:#DBE5EC;
+	border-bottom-color:#BECCD4;
+	border-bottom-width:1px;
+	border-bottom-style:solid;
+	padding:5px;
+	font-weight:normal;
+	text-align:right;
+}
+.pageSubTitle table {
+	border:0px;
+}
+.pageSubTitle table td {
+	padding:2px;
+	margin:0px;
+	font-weight:normal;
+}
+.containerTitle {
+	margin-top:5px;
+	font-weight:bold;
+	padding:4px;
+	background-color:#B5CEE6;
+}
+
+.containerScroll {
+	position:absolute;
+	overflow:auto;
+}
+
+.containerBody {
+	background:#FFFFFF;
+	padding:2px;
+	border-left:1px solid #B5CEE6;
+	border-right:1px solid #B5CEE6;
+	border-bottom:1px solid #B5CEE6;
+}
+
+.containerBody table td {
+	padding:2px;
+	margin:0px;
+}
+
+.objectGrid {
+	padding:0px;
+	margin:0px;
+	border-bottom:1px solid #999999;
+	border-right:1px solid #999999;
+}
+
+.objectGrid th {
+	padding:2px;
+	margin:0px;
+	font-weight:bold;
+	background-color:#CCCCCC;
+	border-top:1px solid #999999;
+	border-left:1px solid #999999;
+}
+.objectGrid td {
+	padding:2px;
+	margin:0px;
+	border-top:1px solid #999999;
+	border-left:1px solid #999999;
+}
+
+.objectFatalError {
+	padding:0px;
+	margin:0px;
+	border-bottom:1px solid #BECCD4;
+	border-right:1px solid #BECCD4;
+}
+.objectFatalError th {
+	padding:2px;
+	margin:0px;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#FF0000;
+	border-top:1px solid #999999;
+	border-left:1px solid #999999;
+	border-right:1px solid #999999;
+}
+.objectFatalError td {
+	padding:2px;
+	margin:0px;
+	border: 1px solid #999999;
+	text-align:center;
+}
+
+.objectForm {
+	border:0px;
+}
+.objectForm td {
+	padding:2px;
+	margin:0px;
+	font-weight:bold;
+}
+
+.objectField {
+	margin-right:15px;
+}
+
+.containerButtons {
+	margin-top:5px;
+	padding:2px;
+	text-align:center;
+}
+.containerButtonsPopUp {
+	margin-top:5px;
+	margin-bottom:5px;
+	padding:2px;
+	text-align:center;
+	position:absolute;
+	width:97.5%;
+	bottom:0px;
+}
+.containerMessages {
+	position:absolute;
+	width:96.5%;
+	font-weight:bold;
+	padding:2px;
+	background-color:#E0E0E0;
+	bottom:0px;
+	border:1px solid #CCCCCC;
+	padding-left:20px;
+	display:none;
+	cursor:none;
+}
+.msgError {
+	background-color:#FF0000;
+	border:1px solid #000000;	
+	color:#FFFFFF;
+	background-image:url(../Images/error.png);
+	background-repeat:no-repeat;
+	background-position:left;
+	cursor:hand;
+}
+.msgWarning {
+	background-color:#FFCC00;
+	border:1px solid #000000;	
+	color:#000000;
+	background-image:url(../Images/warning.png);
+	background-repeat:no-repeat;
+	background-position:left;
+	cursor:hand;
+}
+.msgSuccessful {
+	background-color:#00CC00;
+	border:1px solid #000000;	
+	color:#FFFFFF;
+	background-image:url(../Images/successful.png);
+	background-repeat:no-repeat;
+	background-position:left;
+	cursor:none;
+}
+
+.msgLoading {
+	background-color:#999999;
+	border:1px solid #000000;	
+	color:#FFFFFF;
+	background-image:url(../Images/wait.png);
+	background-repeat:no-repeat;
+	background-position:left;
+	cursor:none;
+}
+
+.tab_cel {	
+	text-align:center;
+	width:110px;
+}
+.tab_content {	
+	background-color:#D9D7C6;
+	border-bottom:1px outset #FFFFFF;
+	border-left:1px outset #FFFFFF;
+	border-right:1px outset #FFFFFF;		
+	margin:0px;
+	padding:0px;
+}
+.tab_menu {	
+	background-image:url(../Images/tab_fun.gif);
+}
+.tab_menu table {	
+	height:20px;
+	text-align:left;
+	color:#666666;
+	margin:0px;
+	padding:0px;
+}
+.tab_menu table td {
+	margin:0px;
+	padding:0px;
+}
+
+fieldset {
+	border:1px solid #999999;
+	padding:4px;
+}
+
+fieldset legend {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	color:#000000;
+}

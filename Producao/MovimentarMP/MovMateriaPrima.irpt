@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<title>SAP MII</title>
+<link type="text/css" rel="stylesheet" href="../../Common/Includes/Styles.css" />
+<script language="javascript" src="../../Common/Includes/Functions.js"></script>
+<script language="javascript" src="Includes/MovMateriaPrima.js"></script>
+</head>
+<body onclick="hideCalendario();">
+<div class="pageTitle">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>Vincular e Desvincular Matérias-Primas</td>
+      <td align="right" nowrap="nowrap">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div id="calendar" class="calendar">
+  <APPLET NAME="calendarioData" id="calendarioData" CODEBASE="/XMII/Classes" CODE="iCalendar" ARCHIVE="illum8.zip" WIDTH="195" HEIGHT="136" TABINDEX=1 MAYSCRIPT>
+  <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE&#x2f;Common&#x2f;Display&#x2f;calendarioData">
+  <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+  <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+  <PARAM NAME="SelectionEvent" VALUE="getDataCalendario">
+</APPLET>
+</div>
+<div class="containerBody">
+  <table class="objectForm">
+    <tr>
+      <td colspan="3" align="right">Centro de Trabalho:</td>
+      <td>
+        <APPLET NAME="selectCentro" ID="selectCentro" CODEBASE="/XMII/Classes" CODE="iBrowser" ARCHIVE="illum8.zip" WIDTH="150" HEIGHT="20" TABINDEX=1 MAYSCRIPT>
+            <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Query/Qry_Centros_de_Trabalho_Combo_Sel">
+            <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Display/browserCentroTrabalho">
+            <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+            <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+        </APPLET>
+      </td>
+      <td align="right">Status:</td>
+      <td>
+        <APPLET NAME="selectStatus" ID="selectStatus" CODEBASE="/XMII/Classes" CODE="iBrowser" ARCHIVE="illum8.zip" WIDTH="150" HEIGHT="20" TABINDEX=1 MAYSCRIPT>
+            <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Query/Qry_Ordens_de_Producao_Status_Combo">
+            <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Display/browserStatus">
+            <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+            <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+        </APPLET>
+      </td>
+      <td align="right">Data início</td>
+      <td align="right">
+        <input name="dataInicioFiltro" id="dataInicioFiltro" type="text" size="10" maxlength="10"/>
+        <img src="../../Common/Images/calendar.png" width="16" height="16" onclick="showCalendario(document.getElementById('dataInicioFiltro'));" style="cursor:pointer;"/>
+      </td>
+      <td align="right">Data Final</td>
+      <td align="right">
+        <input name="dataFimFiltro" id="dataFimFiltro" type="text" size="10" maxlength="10" />
+        <img src="../../Common/Images/calendar.png" width="16" height="16" onclick="showCalendario(document.getElementById('dataFimFiltro'));" style="cursor:pointer;"/>
+      </td>
+      <td align="right"><input type="checkbox" name="checkbox" id="checkbox" style="border:0px;" /></td>
+      <td>Canceladas</td>
+      <td><input type="button" name="BtFilter" id="BtFilter" value="Filtrar" class="objectButton" onclick="filtraOrdensProducao();" /></td>
+    </tr>
+    <tr>
+      <td align="right">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+      <td align="right">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td align="right">&nbsp;</td>
+      <td colspan="6" align="right">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerTitle">Ordens de Produção</div>
+<div class="containerBody" style="height:158px; overflow:auto; z-index:-1;">
+  <APPLET NAME="gridOPs" id="gridOPs" CODEBASE="/XMII/Classes" CODE="iGrid" ARCHIVE="illum8.zip"  WIDTH="800" HEIGHT="155" TABINDEX=1 MAYSCRIPT>
+    <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Query/Qry_Ordens_de_Producao_Filtro_Sel">
+    <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Display/gridOrdensProducao">
+    <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+    <PARAM NAME="ColumnHeadings" VALUE="Código,Início,Final,Material,Descrição,Peso,Restante,UM,Status">
+    <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+    <PARAM NAME="SelectionEvent" VALUE="filtraMovimentoEstoque">
+  </APPLET>
+</div>
+<div class="containerBody" style="background-color:#E0E0E0;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="left"><span class="containerButtons">
+        <input name="btExibeComponente" id="btExibeComponente" type="button" class="objectButton" onclick="openComponentes();" disabled="disabled" value="Componentes" />
+        <input name="btExibePlanoCorte" id="btExibePlanoCorte" type="button" class="objectButton" onclick="openPlanoCorte();" disabled="disabled" value="Plano de Corte" />
+      </span></td>
+      <td align="right"><span class="containerButtons">
+        <input name="BtInsert9" id="BtInsert9" type="button" class="objectButton" onclick="showMessage('Operação executada com sucesso.','S')" value="Limpar Tela" />
+      </span></td>
+    </tr>
+  </table>
+</div>
+<div class="containerTitle">Matérias-Primas Vinculadas</div>
+<div class="containerBody" style="height:145px; overflow:auto;">
+  <APPLET NAME="gridMateriaPrima" id="gridMateriaPrima" CODEBASE="/XMII/Classes" CODE="iGrid" ARCHIVE="illum8.zip"  WIDTH="800" HEIGHT="155" TABINDEX=1 MAYSCRIPT>
+    <PARAM NAME="QueryTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Query/Qry_Movimentacoes_de_Estoque_Sel">
+    <PARAM NAME="DisplayTemplate" VALUE="ACOCEARENSE/Producao/TelasPortal/MovimentarMP/Display/gridMovimentacoesEstoque">
+    <PARAM NAME="Content-Type" VALUE="image&#x2f;png">
+    <PARAM NAME="ColumnHeadings" VALUE="UD,Lote,Material,Descrição,Pay-Off,Peso,Restante,Status">
+    <PARAM NAME="CreationEvent" VALUE="setAppletsLoaded">
+  </APPLET>
+</div>
+<div class="containerBody" style="background-color:#E0E0E0;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td align="left"><span class="containerButtons">
+        <input name="btVincularMaterial" id="btVincularMaterial" type="button" class="objectButton" onclick="openVincular();" disabled="disabled" value="  Vincular  " />
+        <input name="btDesvincularMaterial" id="btDesvincularMaterial" type="button" class="objectButton" onclick="openSobrar();" disabled="disabled" value="Desvincular" />
+      </span></td>
+      <td align="right">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="containerButtons"></div>
+<div id="messageBar" class="containerMessages"></div>
+</body>
+</html>
